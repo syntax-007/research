@@ -102,10 +102,10 @@ Use this format:
 
 ## Shortlist
 
-| # | Listing | Price | Miles | Year | Distance | Flags |
-|---|---------|-------|-------|------|----------|-------|
-| 1 | [Title](url) | $X,XXX | XXk | XXXX | XX mi | FLAG1 / FLAG2 |
-| 2 | [Title](url) | $X,XXX | XXk | XXXX | XX mi | |
+| # | Listing | Price | Miles | Year | Distance | Days Listed | Flags |
+|---|---------|-------|-------|------|----------|-------------|-------|
+| 1 | [Title](url) | $X,XXX | XXk | XXXX | XX mi | XX | FLAG1 / FLAG2 |
+| 2 | [Title](url) | $X,XXX | XXk | XXXX | XX mi | XX | |
 ...
 
 ---
