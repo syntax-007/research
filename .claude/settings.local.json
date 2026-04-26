@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git init *)",
+      "WebFetch(domain:www.cargurus.com)",
+      "WebFetch(domain:www.cars.com)",
+      "WebFetch(domain:www.autotrader.com)",
+      "WebFetch(domain:www.edmunds.com)",
+      "WebFetch(domain:www.mcgrathhondaelgin.com)",
+      "WebFetch(domain:www.capitalone.com)",
+      "WebFetch(domain:www.mlady.com)",
+      "WebFetch(domain:www.elgincdjr.com)",
+      "WebFetch(domain:www.andersontoyota.com)",
+      "WebFetch(domain:www.biggersmazda.com)",
+      "WebFetch(domain:www.kbb.com)",
+      "WebFetch(domain:www.carfax.com)",
+      "WebFetch(domain:www.elgintoyota.com)"
+    ]
+  }
+}
