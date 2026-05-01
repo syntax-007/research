@@ -65,7 +65,11 @@ Search using the four target titles. Apply remote and "past month" filters where
 - "Senior Director of Engineering"
 
 **Sources to search (in priority order):**
-1. **LinkedIn Jobs** *(primary)* — search each title with "Remote" and "Past Month" filters, location set to "United States". Use `site:linkedin.com/jobs/view` in web search to surface individual job posting URLs.
+1. **LinkedIn Jobs** *(primary)* — fetch the following URL pattern directly using WebFetch for each title (URL-encode spaces as `+`):
+   ```
+   https://www.linkedin.com/jobs/search/?keywords=TITLE&location=United+States&f_WT=2&f_TPR=r2592000
+   ```
+   Parameters: `f_WT=2` = Remote filter, `f_TPR=r2592000` = Past 30 days. This returns ~60 listings per page with job IDs. Fetch individual job pages at `https://www.linkedin.com/jobs/view/JOB_ID/` to verify each role is open and get full details. Use `&start=25` or `&start=50` to paginate to additional result pages.
 2. **Greenhouse / Lever / Ashby** *(secondary, for verification)* — use `site:job-boards.greenhouse.io OR site:jobs.lever.co OR site:jobs.ashbyhq.com` to find postings. Fetch each URL to confirm it is still open before adding. Skip any that redirect or show a closed/error page.
 3. **Company career pages** — search career pages of well-known tech companies (e.g., Stripe, Airbnb, Shopify, Figma, Notion, Linear, Vercel, GitHub, HashiCorp, PagerDuty, Datadog, New Relic, Twilio, Okta, Snowflake, Databricks, Confluent, MongoDB)
 
