@@ -56,7 +56,7 @@ Check the spreadsheet for a tab named with today's date (YYYY-MM-DD).
 
 ### Step 2 — Search each source
 
-Search all five sources using the four target titles. Apply remote filter on each platform where available.
+Search using the four target titles. Apply remote and "past month" filters where available. **Only include postings from the last 30 days — skip anything older.**
 
 **Search titles:**
 - "Engineering Manager"
@@ -64,19 +64,20 @@ Search all five sources using the four target titles. Apply remote filter on eac
 - "Director of Engineering"
 - "Senior Director of Engineering"
 
-**Sources to search:**
-1. **LinkedIn Jobs** — search each title with "Remote" filter and location set to "United States"
-2. **Indeed** — search each title with "Remote" filter
-3. **Glassdoor** — search each title with "Remote" filter
-4. **Levels.fyi** — search job listings for each title
-5. **Company career pages** — search career pages of well-known tech companies (e.g., Stripe, Airbnb, Shopify, Figma, Notion, Linear, Vercel, GitHub, HashiCorp, PagerDuty, Datadog, New Relic, Twilio, Okta, Snowflake, Databricks, Confluent, MongoDB)
+**Sources to search (in priority order):**
+1. **LinkedIn Jobs** *(primary)* — search each title with "Remote" and "Past Month" filters, location set to "United States". Use `site:linkedin.com/jobs/view` in web search to surface individual job posting URLs.
+2. **Greenhouse / Lever / Ashby** *(secondary, for verification)* — use `site:job-boards.greenhouse.io OR site:jobs.lever.co OR site:jobs.ashbyhq.com` to find postings. Fetch each URL to confirm it is still open before adding. Skip any that redirect or show a closed/error page.
+3. **Company career pages** — search career pages of well-known tech companies (e.g., Stripe, Airbnb, Shopify, Figma, Notion, Linear, Vercel, GitHub, HashiCorp, PagerDuty, Datadog, New Relic, Twilio, Okta, Snowflake, Databricks, Confluent, MongoDB)
 
-### Step 3 — Evaluate each result
+### Step 3 — Evaluate each result for fit
 
-For each result found, evaluate fit against the candidate profile:
+For each result found, evaluate against the candidate profile before adding:
 - Title must be one of the four target titles (or a close equivalent — use judgment)
-- Must be remote (skip hybrid-only unless labeled "Remote / Hybrid")
+- Must be remote (skip hybrid-only or in-office roles)
+- Posted within the last 30 days — skip older postings
 - If comp is listed and is explicitly below $180k, skip the role
+- Assess fit: does the job description align with the candidate's background (Agile leadership, SaaS/healthtech/fintech, modern cloud stack, team scaling)? Skip roles requiring deep specializations not in the candidate's profile (e.g., hardware, data center ops, Salesforce-only stacks)
+- Cap at 25 roles per run — prioritize best fit over quantity
 
 ### Step 4 — Deduplicate
 
