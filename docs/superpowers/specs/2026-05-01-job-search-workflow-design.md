@@ -29,7 +29,7 @@ A two-phase, on-demand job search workflow that sources relevant engineering lea
 **Candidate profile context (used to evaluate fit):**
 - 15+ years experience; currently Senior Engineering Manager at Oak Street Health (CVS)
 - Background: healthtech, fintech, SaaS
-- Strengths: Agile/Scrum, team scaling, CI/CD, HIPAA/SOC2 compliance, AWS/Azure
+- Strengths: Agile/Scrum, team scaling, CI/CD, HIPAA/SOC2 compliance, AWS/Azure, AI/generative AI, C#, Python, JavaScript, React, Grafana
 - Certifications: PSM I, PSF, PAL-EBM, PAL I
 
 ---
