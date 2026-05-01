@@ -1,10 +1,9 @@
 # Job Search Workflow
 
-A plain-English recipe for sourcing engineering leadership roles and managing the job application pipeline.
+A plain-English recipe for sourcing engineering leadership roles and tracking them in a date-tabbed Google Sheet.
 
 **Google Sheet tracker:** See `resources/job-pipeline-sheet.md` for the sheet URL.
 **Spreadsheet ID:** 1-2pSoXpWk1gul1x3STs8n06SetfPG_XJ9kqagkGPVJ4
-**Sheet name:** Sheet1
 
 ---
 
@@ -17,28 +16,31 @@ Use this profile to evaluate role fit throughout the workflow.
 - **Experience:** 15+ years in engineering leadership
 - **Target roles:** Engineering Manager, Senior Engineering Manager, Director of Engineering, Senior Director of Engineering
 - **Location requirement:** Remote only (US-based companies)
-- **Compensation floor:** $180k/year (filter out roles explicitly listed below this; include unlisted roles but flag them)
+- **Compensation floor:** $180k/year (filter out roles explicitly listed below this; include unlisted roles)
 - **Background:** Healthtech, fintech, SaaS
 - **Strengths:** Agile/Scrum, team scaling, CI/CD, HIPAA/SOC2 compliance, AWS/Azure, AI/generative AI, C#, Python, JavaScript, React, Grafana, Node.js, Golang, Kubernetes, Kafka
 - **Certifications:** PSM I, PSF, PAL-EBM, PAL I
 
 ---
 
-## Tracker Column Reference
+## Sheet Structure
+
+Each job search run writes to a date-named tab (e.g., `2026-05-01`).
+
+- If a tab for today's date already exists, append rows to it.
+- If no tab for today's date exists, create a new tab named with today's date (YYYY-MM-DD), add a bold frozen header row, then append rows.
+
+**Columns (5):**
 
 | Column | Values |
 |---|---|
-| Date Found | YYYY-MM-DD (today's date) |
 | Company | Company name |
 | Role Title | Exact job title from posting |
 | Level | EM / Sr EM / Dir / Sr Dir |
 | Source | LinkedIn / Indeed / Glassdoor / Levels.fyi / Company Site |
 | Job URL | Direct link to the posting |
-| Comp (Listed) | Salary range if posted; blank if not listed |
-| Remote | Yes / Hybrid / Unknown |
-| Status | New (default on creation) |
 
-**Deduplication rule:** Before adding any row, read the existing sheet and check for a row where both Company and Role Title match the new entry. If a match exists, skip it.
+**Deduplication rule:** Before adding any row, check all existing rows on today's tab for a matching Company + Role Title. Skip duplicates.
 
 ---
 
@@ -46,9 +48,15 @@ Use this profile to evaluate role fit throughout the workflow.
 
 **Triggered by:** "run job search"
 
-### Step 1 — Search each source
+### Step 1 — Determine today's tab
 
-Search all five sources below using the four target titles. Apply remote filter on each platform where available.
+Check the spreadsheet for a tab named with today's date (YYYY-MM-DD).
+- If it exists: use it, append below existing rows.
+- If it does not exist: create a new sheet tab named with today's date, write the bold frozen header row (`Company, Role Title, Level, Source, Job URL`), then append rows starting at row 2.
+
+### Step 2 — Search each source
+
+Search all five sources using the four target titles. Apply remote filter on each platform where available.
 
 **Search titles:**
 - "Engineering Manager"
@@ -63,30 +71,27 @@ Search all five sources below using the four target titles. Apply remote filter 
 4. **Levels.fyi** — search job listings for each title
 5. **Company career pages** — search career pages of well-known tech companies (e.g., Stripe, Airbnb, Shopify, Figma, Notion, Linear, Vercel, GitHub, HashiCorp, PagerDuty, Datadog, New Relic, Twilio, Okta, Snowflake, Databricks, Confluent, MongoDB)
 
-### Step 2 — Evaluate each result
+### Step 3 — Evaluate each result
 
 For each result found, evaluate fit against the candidate profile:
 - Title must be one of the four target titles (or a close equivalent — use judgment)
 - Must be remote (skip hybrid-only unless labeled "Remote / Hybrid")
 - If comp is listed and is explicitly below $180k, skip the role
-- If comp is not listed, include the role but set Comp (Listed) to blank
 
-### Step 3 — Deduplicate
+### Step 4 — Deduplicate
 
-Read all existing rows from the tracker sheet. For each qualifying role, check whether a row already exists with the same Company AND Role Title. Skip any duplicates.
+Read all existing rows on today's tab. For each qualifying role, check whether a row already exists with the same Company AND Role Title. Skip any duplicates.
 
-### Step 4 — Append new rows
+### Step 5 — Append new rows
 
-For each qualifying, non-duplicate role, append a new row to the sheet using the column order:
-`Date Found, Company, Role Title, Level, Source, Job URL, Comp (Listed), Remote, Status`
+For each qualifying, non-duplicate role, append a new row in column order:
+`Company, Role Title, Level, Source, Job URL`
 
-Set Status to "New" for all new rows.
-
-### Step 5 — Report to user
+### Step 6 — Report to user
 
 After all sources are searched, report:
 - How many new roles were added
-- Total number of roles in the pipeline
+- Total rows on today's tab
 - Any sources that returned no results or could not be searched
 
 ---
@@ -95,32 +100,19 @@ After all sources are searched, report:
 
 **Triggered by:** "review my pipeline"
 
-### Step 1 — Read the tracker
+### Step 1 — Read all tabs
 
-Read all rows from the sheet.
+Get the list of all date-named tabs in the spreadsheet.
 
-### Step 2 — Summarize by status
+### Step 2 — Summarize
 
-Count rows grouped by the Status column and report:
+Report:
+- Total roles found per date tab (most recent first)
+- Grand total across all tabs
 
-```
-Pipeline summary:
-- New: X
-- Applied: X
-- Interviewing: X
-- Offer: X
-- Rejected: X
-- Passed: X
-- Total: X
-```
+### Step 3 — Report to user
 
-### Step 3 — Flag stale roles
-
-Identify any rows where Status = "New" and Date Found is more than 7 days ago. List them by Company and Role Title so the user can decide whether to act or update the status.
-
-### Step 4 — Report to user
-
-Deliver the summary and stale role list clearly and concisely.
+Deliver the summary concisely.
 
 ---
 
