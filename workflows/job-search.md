@@ -14,7 +14,7 @@ Use this profile to evaluate role fit throughout the workflow.
 - **Name:** Richard Peters
 - **Current role:** Senior Engineering Manager, Oak Street Health (CVS)
 - **Experience:** 15+ years in engineering leadership
-- **Target roles:** Engineering Manager, Senior Engineering Manager, Director of Engineering, Senior Director of Engineering
+- **Target roles:** Engineering Manager, Senior Engineering Manager
 - **Location requirement:** Remote only (US-based companies)
 - **Compensation floor:** $180k/year (filter out roles explicitly listed below this; include unlisted roles)
 - **Background:** Healthtech, fintech, SaaS
@@ -61,8 +61,6 @@ Search using the four target titles. Apply remote and "past month" filters where
 **Search titles:**
 - "Engineering Manager"
 - "Senior Engineering Manager"
-- "Director of Engineering"
-- "Senior Director of Engineering"
 
 **Sources to search (in priority order):**
 1. **LinkedIn Jobs** *(primary)* — fetch the following URL pattern directly using WebFetch for each title (URL-encode spaces as `+`):
